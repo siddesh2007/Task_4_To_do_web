@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern To-Do</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-o15fStVwhC6qYBnL7BqXc9E+u6KDAdAm8X1sC59yRyvE4s46HoPazTA/gkGEXUXMaLLq5yRvDqxn6VOGGAI5Tw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="backdrop"></div>
+  <div class="orbs"></div>
+  <div class="app">
+    <div class="subtle-wave"></div>
+    <header class="app-header">
+      <div class="title"><i class="fa-solid fa-clipboard-check"></i><span>Focus Tasks</span></div>
+      <div class="datetime" id="datetime">--</div>
+    </header>
+
+    <div class="controls">
+      <input class="input" id="search" placeholder="Search tasks" aria-label="Search tasks" />
+      <select class="select" id="sort">
+        <option value="due-asc">Sort: Due soon</option>
+        <option value="due-desc">Sort: Due latest</option>
+        <option value="newest">Sort: Newest</option>
+        <option value="oldest">Sort: Oldest</option>
+        <option value="priority">Sort: Priority</option>
+      </select>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="overdue">Overdue</button>
+      </div>
+      <div class="pill" id="status-pill"><i class="fa-regular fa-hourglass-half"></i><span>Stay organized</span></div>
+    </div>
+
+    <div class="progress">
+      <div id="progress-text">0 of 0 tasks completed</div>
+      <div class="progress-track"><div class="progress-bar" id="progress-bar"></div></div>
+    </div>
+
+    <div class="insights">
+      <div class="insight-card">
+        <div class="insight-label">Total</div>
+        <div class="insight-value" id="stat-total">0</div>
+        <div class="insight-sub">All tasks</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Pending</div>
+        <div class="insight-value" id="stat-pending">0</div>
+        <div class="insight-sub">Awaiting action</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Completed</div>
+        <div class="insight-value" id="stat-done">0</div>
+        <div class="insight-sub">Done and dusted</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Overdue</div>
+        <div class="insight-value" id="stat-overdue">0</div>
+        <div class="insight-sub">Needs attention</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-label">Due soon</div>
+        <div class="insight-value" id="stat-soon">0</div>
+        <div class="insight-sub">Within 24 hours</div>
+      </div>
+    </div>
+
+    <form class="add-form" id="add-form">
+      <input class="input" id="task-input" placeholder="Add a task" required />
+      <input class="input" id="date-input" type="date" />
+      <input class="input" id="time-input" type="time" />
+      <select class="select" id="priority-input" aria-label="Priority">
+        <option value="high">High priority</option>
+        <option value="medium" selected>Medium priority</option>
+        <option value="low">Low priority</option>
+      </select>
+      <button class="button primary" type="submit"><i class="fa-solid fa-plus"></i>Add</button>
+    </form>
+
+    <div class="toolbar">
+      <div class="pill" id="next-due-pill"><i class="fa-regular fa-calendar"></i><span>No due dates yet</span></div>
+      <div class="toolbar-actions">
+        <button class="button ghost" id="clear-completed"><i class="fa-regular fa-circle-check"></i>Clear completed</button>
+      </div>
+    </div>
+
+    <div class="tasks" id="tasks"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
